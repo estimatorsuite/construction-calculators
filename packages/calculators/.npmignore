@@ -1,0 +1,12 @@
+# Files to exclude from npm package
+# Source files are included via "files" in package.json
+.github
+demo
+*.md
+!README.md
+.gitignore
+LICENSE
+tsconfig.json
+tsup.config.ts
+src/**/*.test.*
+src/**/*.spec.*

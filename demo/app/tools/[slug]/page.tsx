@@ -1,0 +1,87 @@
+import type { Metadata } from "next";
+import { calculators, getCalculatorBySlug, getTradeCalculators } from "@/lib/calculators-meta";
+import { componentRegistry } from "@/lib/component-registry";
+import { CalculatorDisclaimer, Breadcrumb, LastUpdated } from "@estimatorsuite/calculators";
+
+export function generateStaticParams() {
+  return getTradeCalculators().map((c) => ({ slug: c.slug }));
+}
+
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const calc = getCalculatorBySlug(params.slug);
+  if (!calc) return {};
+  return {
+    title: `${calc.title} — Free Online Calculator`,
+    description: calc.shortDescription,
+    alternates: {
+      canonical: `/tools/${calc.slug}/`,
+    },
+  };
+}
+
+export default function TradeCalculatorPage({ params }: { params: { slug: string } }) {
+  const calc = getCalculatorBySlug(params.slug);
+  if (!calc) return null;
+
+  const CalculatorComponent = componentRegistry[calc.componentExport];
+  if (!CalculatorComponent) return null;
+
+  const related = calculators
+    .filter((c) => c.type === "trade" && c.slug !== calc.slug)
+    .slice(0, 3);
+
+  return (
+    <div className="container mx-auto max-w-4xl px-4 py-8">
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/construction-calculators/" },
+          { label: "Trade Estimators", href: "/construction-calculators/tools/" },
+          { label: calc.title },
+        ]}
+      />
+
+      <h1 className="font-display text-3xl md:text-4xl font-bold text-primary">
+        {calc.title}
+      </h1>
+      <p className="mt-3 text-lg text-muted-foreground">
+        {calc.shortDescription}
+      </p>
+
+      <div className="mt-2">
+        <LastUpdated date={calc.lastUpdated} />
+      </div>
+
+      <div className="mt-6">
+        <CalculatorComponent />
+      </div>
+
+      <div className="mt-4">
+        <CalculatorDisclaimer
+          variant={calc.needsSafetyWarning ? "safety" : "standard"}
+        />
+      </div>
+
+      {related.length > 0 && (
+        <section className="mt-8">
+          <h2 className="font-display text-base font-bold text-foreground mb-3">
+            Other Trade Estimators
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {related.map((r) => (
+              <a
+                key={r.slug}
+                href={`/construction-calculators/tools/${r.slug}/`}
+                className="glass-card rounded-lg p-4 hover:border-accent/50 transition-colors group"
+              >
+                <h3 className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">
+                  {r.title}
+                </h3>
+                <p className="mt-1 text-xs text-muted-foreground">{r.shortDescription}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,124 @@
+/*
+  @estimatorsuite/calculators theme tokens
+
+  Override these CSS custom properties to customize colors.
+  Add the `esc-dark` class to a parent element for dark mode.
+
+  Usage:
+    @import "@estimatorsuite/calculators/styles.css";
+
+  These tokens map to Tailwind utility classes used by the calculator
+  components (text-foreground, border-border, text-accent, bg-muted, etc.).
+  Configure your Tailwind theme to reference these variables.
+*/
+
+/* ===== Light Mode (default) ===== */
+
+:root {
+  --esc-background: 0 0% 98%;
+  --esc-foreground: 215 25% 15%;
+  --esc-card: 0 0% 100%;
+  --esc-card-foreground: 215 25% 15%;
+  --esc-primary: 215 75% 34%;
+  --esc-primary-foreground: 0 0% 100%;
+  --esc-secondary: 215 15% 96%;
+  --esc-secondary-foreground: 215 25% 15%;
+  --esc-muted: 215 12% 95%;
+  --esc-muted-foreground: 215 12% 45%;
+  --esc-accent: 215 75% 34%;
+  --esc-accent-foreground: 0 0% 100%;
+  --esc-destructive: 0 84% 60%;
+  --esc-destructive-foreground: 0 0% 100%;
+  --esc-border: 215 12% 88%;
+  --esc-input: 215 12% 80%;
+  --esc-ring: 215 75% 34%;
+  --esc-radius: 0.75rem;
+
+  /* CTA color — rust orange (industrial action) */
+  --esc-action: 25 85% 50%;
+  --esc-action-foreground: 0 0% 100%;
+  --esc-action-hover: 25 85% 42%;
+  --esc-action-light: 25 85% 95%;
+  --esc-action-dark: 25 85% 35%;
+
+  /* Semantic colors */
+  --esc-success: 158 75% 42%;
+  --esc-success-dark: 158 75% 30%;
+  --esc-warning: 35 90% 52%;
+  --esc-warning-dark: 35 90% 35%;
+
+  /* Surfaces */
+  --esc-surface-1: 0 0% 100%;
+  --esc-surface-2: 0 0% 98%;
+  --esc-surface-3: 215 12% 96%;
+  --esc-surface-4: 215 12% 90%;
+
+  /* Transitions */
+  --esc-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --esc-transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Dark Mode ===== */
+
+.esc-dark {
+  --esc-background: 224 25% 8%;
+  --esc-foreground: 210 20% 95%;
+  --esc-card: 224 20% 12%;
+  --esc-card-foreground: 210 20% 92%;
+  --esc-primary: 215 75% 50%;
+  --esc-primary-foreground: 0 0% 100%;
+  --esc-secondary: 224 15% 16%;
+  --esc-secondary-foreground: 210 20% 90%;
+  --esc-muted: 224 15% 18%;
+  --esc-muted-foreground: 215 12% 55%;
+  --esc-accent: 215 75% 50%;
+  --esc-accent-foreground: 0 0% 100%;
+  --esc-destructive: 0 80% 55%;
+  --esc-destructive-foreground: 0 0% 100%;
+  --esc-border: 224 15% 20%;
+  --esc-input: 224 15% 24%;
+  --esc-ring: 215 75% 50%;
+
+  --esc-action: 25 85% 52%;
+  --esc-action-foreground: 0 0% 100%;
+  --esc-action-hover: 25 85% 58%;
+  --esc-action-light: 25 85% 15%;
+  --esc-action-dark: 25 85% 35%;
+
+  --esc-success: 158 75% 48%;
+  --esc-success-dark: 158 75% 55%;
+  --esc-warning: 35 90% 58%;
+  --esc-warning-dark: 35 90% 65%;
+
+  --esc-surface-1: 224 20% 12%;
+  --esc-surface-2: 224 18% 14%;
+  --esc-surface-3: 224 15% 18%;
+  --esc-surface-4: 224 12% 24%;
+}
+
+/* ===== Utility classes ===== */
+
+.glass-card {
+  background: hsl(var(--esc-card));
+  border: 1px solid hsl(var(--esc-border));
+}
+
+.esc-dark .glass-card {
+  background: hsl(var(--esc-card) / 0.8);
+  border-color: hsl(var(--esc-border) / 0.6);
+}
+
+.glass {
+  background: hsl(var(--esc-card));
+}
+
+/* Print styles — calculator results to PDF */
+@media print {
+  header, footer, nav, .no-print {
+    display: none !important;
+  }
+  .glass-card {
+    background: white !important;
+    border: 1px solid #ddd !important;
+  }
+}

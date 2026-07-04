@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import "@estimatorsuite/calculators/styles.css";
+
+/* Map --esc-* tokens to Tailwind v4 theme colors */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --color-background: hsl(var(--esc-background));
+  --color-foreground: hsl(var(--esc-foreground));
+  --color-card: hsl(var(--esc-card));
+  --color-card-foreground: hsl(var(--esc-card-foreground));
+  --color-primary: hsl(var(--esc-primary));
+  --color-primary-foreground: hsl(var(--esc-primary-foreground));
+  --color-secondary: hsl(var(--esc-secondary));
+  --color-secondary-foreground: hsl(var(--esc-secondary-foreground));
+  --color-muted: hsl(var(--esc-muted));
+  --color-muted-foreground: hsl(var(--esc-muted-foreground));
+  --color-accent: hsl(var(--esc-accent));
+  --color-accent-foreground: hsl(var(--esc-accent-foreground));
+  --color-border: hsl(var(--esc-border));
+  --color-input: hsl(var(--esc-input));
+  --color-ring: hsl(var(--esc-ring));
+  --color-destructive: hsl(var(--esc-destructive));
+
+  --color-action: hsl(var(--esc-action));
+  --color-action-foreground: hsl(var(--esc-action-foreground));
+  --color-action-hover: hsl(var(--esc-action-hover));
+
+  --color-success: hsl(var(--esc-success));
+  --color-warning: hsl(var(--esc-warning));
+
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--esc-border));
+  }
+  body {
+    background-color: hsl(var(--esc-background)) !important;
+    color: hsl(var(--esc-foreground));
+    line-height: 1.7;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: hsl(var(--esc-card));
+    border: 1px solid hsl(var(--esc-border));
+  }
+  .glass {
+    background: hsl(var(--esc-card));
+  }
+}
+
+@media print {
+  header, footer, nav, .no-print {
+    display: none !important;
+  }
+  .glass-card {
+    background: white !important;
+    border: 1px solid #ddd !important;
+  }
+}

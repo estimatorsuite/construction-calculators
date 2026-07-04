@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://estimatorsuite.github.io/construction-calculators/sitemap.xml

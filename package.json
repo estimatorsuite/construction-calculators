@@ -1,0 +1,23 @@
+{
+  "name": "construction-calculators",
+  "private": true,
+  "description": "42 React construction calculators with pure calculation functions — concrete, roofing, flooring, HVAC, plumbing, and more.",
+  "workspaces": [
+    "packages/*",
+    "demo"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace packages/calculators && npm run build --workspace demo",
+    "build:pkg": "npm run build --workspace packages/calculators",
+    "build:demo": "npm run build --workspace demo",
+    "dev:demo": "npm run dev --workspace demo",
+    "typecheck": "npm run typecheck --workspace packages/calculators && npm run typecheck --workspace demo",
+    "lint": "npm run lint --workspace demo"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/estimatorsuite/construction-calculators"
+  },
+  "homepage": "https://estimatorsuite.github.io/construction-calculators/"
+}
