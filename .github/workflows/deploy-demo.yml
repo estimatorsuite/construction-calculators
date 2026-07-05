@@ -29,6 +29,14 @@ jobs:
       - name: Build npm package
         run: npm run build:pkg
 
+      - name: Add "use client" directive
+        run: |
+          for f in packages/calculators/dist/index.mjs packages/calculators/dist/index.js; do
+            if ! head -1 "$f" | grep -q '"use client"'; then
+              sed -i '1s/^/"use client";\n/' "$f"
+            fi
+          done
+
       - name: Build demo site (static export)
         run: npm run build:demo
 
