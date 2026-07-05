@@ -1,6 +1,6 @@
 {
   "name": "@estimatorsuite/calculators",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "42 React construction calculators and pure calculation functions — concrete, roofing, flooring, HVAC, plumbing, markup, and more. Built for estimating contractors.",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
