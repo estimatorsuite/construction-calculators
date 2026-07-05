@@ -7,11 +7,14 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           registry-url: https://registry.npmjs.org
 
@@ -21,7 +24,5 @@ jobs:
         run: npm run build:pkg
 
       - name: Publish to npm
-        run: npm publish --provenance --access public
+        run: npm publish --access public
         working-directory: packages/calculators
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
