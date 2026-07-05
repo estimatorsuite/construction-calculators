@@ -53,6 +53,19 @@ export default async function TradeCalculatorPage({ params }: { params: Promise<
         <LastUpdated date={calc.lastUpdated} />
       </div>
 
+      <div className="mt-3 glass-card rounded-lg px-4 py-2.5 text-sm flex items-center gap-2">
+        <span className="text-muted-foreground">📋</span>
+        <span className="text-muted-foreground">
+          Full cost guides, how-to steps, and contractor pricing breakdowns at{" "}
+          <a
+            href={`https://estimatorsuite.com/tools/${calc.slug}/`}
+            className="text-accent font-semibold hover:underline"
+          >
+            EstimatorSuite.com
+          </a>
+        </span>
+      </div>
+
       <div className="mt-6">
         <CalculatorComponent />
       </div>
