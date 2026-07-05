@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/local";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
+const inter = localFont({
   variable: "--font-inter",
   src: "../public/fonts/Inter-Regular.woff2",
   weight: "400",
   display: "swap",
 });
 
-const manrope = Manrope({
+const manrope = localFont({
   variable: "--font-manrope",
   src: "../public/fonts/Manrope-Bold.woff2",
   weight: "700",
